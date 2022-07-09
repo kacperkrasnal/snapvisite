@@ -90,7 +90,9 @@ This is list of software that you need to run SnapVisite project and how to inst
 2. Remember to create virtual env and activate with following commands:
    ```sh
    pip install virtualenv
+   
    virtualenv venv
+   
    .\venv\Scripts\activate
    ``` 
 3. Install python packages using terminal with command:
