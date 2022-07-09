@@ -77,12 +77,6 @@ This is list of software that you need to run SnapVisite project and how to inst
   ```sh
   install version 3.6 or newer from webside: https://www.python.org/
   ```
-* django 4.0.4 on newer
-  ```sh
-  install django famework to your virtual enviroment using terminal with command:
-  pip install django
-  ```
-  
 
 
 
