@@ -1,0 +1,18 @@
+{% extends 'snapvisite/base.html' %}
+
+
+{% block content %}
+
+<div class="alert alert-primary text-center" role="alert" style="font-size: 20px">
+    You confirm your email address. Now your account is active, enjoy!<br>
+    <form method="post" enctype="multipart/form-data">
+        {{ form }}
+    <button type="submit" class="btn btn-link" style="font-size: 20px;">
+        Go to home page and snap your first visit.
+    </button>
+    {% csrf_token %}
+    </form>
+</div>
+
+
+{% endblock %}

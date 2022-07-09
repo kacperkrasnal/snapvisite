@@ -1,0 +1,26 @@
+{% extends 'snapvisite/base.html' %}
+
+
+{% block content %}
+
+<div class="d-flex justify-content-center">
+    <div class="flex-row">
+    <div class="text-center" style="border-bottom: solid 1px gray; margin-bottom: 20px">
+        <h1>Your appointment</h1>
+    </div>
+        <form method="post" enctype="multipart/form-data">
+            {% for field in form %}
+                <div class="column" style="margin-bottom: 20px">
+                <label for="{{ field.auto_id }}"> {{ field.label }}:</label>
+                {{ field }}
+                </div>
+            {% endfor %}
+        <button type="submit" class="btn btn-lg btn-outline-success" name="submit" style="margin-outside: 24px; width: 30%; font-size: 24px;">
+            Snap!
+        </button>
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

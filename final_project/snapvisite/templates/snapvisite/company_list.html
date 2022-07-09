@@ -1,0 +1,16 @@
+{% extends 'snapvisite/base.html' %}
+{% load static %}
+{% load custom_tags %}
+
+{% block content %}
+
+{{ category }}
+<div class="container" style="font-family: 'Lato Light', serif;">
+        {% for company in company_list %}
+        {% include "snapvisite/company_row.html" %}
+        {% endfor %}
+</div>
+
+
+
+{% endblock content %}

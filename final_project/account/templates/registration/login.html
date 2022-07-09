@@ -1,0 +1,55 @@
+{% extends 'snapvisite/base.html' %}
+
+{% block content %}
+<div class="container-fluid mx-auto" style="background-color: #CAF7F6;border: 1px solid gray;">
+  <br>
+  <h1 class="display-3 text-center"> Login </h1>
+  <br>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+        <form method="post">
+            <div class="mb-3 mt-3 text-center">
+
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <div class="alert alert-danger">
+                        {{error|escape}}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+              <label for="id_username"><h1 class="display-6">Email</h1></label>
+              <input type="text" class="form-control" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150"
+              required id="id_username">
+            </div>
+            <div class="mb-3 mt-3 text-center">
+              <label for="id_password"><h1 class="display-6">Password</h1></label>
+              <input type="password" class="form-control" name="password" autocomplete="current-password" required id="id_password">
+              <p style="font-size: 18px">Forgot your <strong>password?</strong> <a style="color: green; text-decoration: none" href="{% url 'login' %}">Change password</a></p>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-lg btn-outline-dark" name='submit' value="login" style="margin-bottom: 20px; width: 40%; font-size: 24px; background-color: white; color: black;"> Login </button>
+            </div>
+             {% csrf_token %}
+        </form>
+
+      </div>
+
+      <div class="col-6">
+          <div class="ms-4 mt-3 p-3" style="border: 2px solid gray;">
+            <h1 class="display-6 text-center">You don't have an account? Create as soon as possible</h1>
+            <ul>
+              <li><p style="font-size:18px;">You will able to open your own <strong>company</strong>.</p></li>
+              <li><p style="font-size:18px;">View the <strong>history</strong> of your visits</p></li>
+              <li><p style="font-size:18px;">Able to add an <strong>opinion</strong> for your favourite salon.</p></li>
+            </ul>
+            <div class="text-center">
+              <a href="{% url 'account:registration' %}"><button class="btn btn-lg btn-outline-dark mx-auto" style="background-color: white; color: black;"> Registration </button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+{% endblock content %}

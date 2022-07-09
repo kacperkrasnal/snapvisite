@@ -1,0 +1,23 @@
+[
+  {
+    "model": "snapvisite.Category",
+    "pk": 1,
+    "fields": {
+      "category_name": "Hairdresser"
+    }
+  },
+  {
+    "model": "snapvisite.Category",
+    "pk": 2,
+    "fields": {
+      "category_name": "Tatoo"
+    }
+  },
+  {
+    "model": "snapvisite.Category",
+    "pk": 3,
+    "fields": {
+      "category_name": "Make up artist"
+    }
+  }
+]

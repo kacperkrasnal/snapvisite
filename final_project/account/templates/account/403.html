@@ -1,0 +1,16 @@
+<!--TEMPLATE CREATED TO OVERRIDE 403 ERROR FOR NOT CONFIRMED ACCOUNTS-->
+{% extends 'snapvisite/base.html' %}
+
+
+{% block content %}
+
+<div class="alert alert-warning text-center" role="alert" style="font-size: 20px">
+    <h2>You see this, beacouse your account is not confirmed yet. Please check your mailbox for mail with confirmation link.</h2>
+    <p>If you cannot find mail from us, click below to send it again.</p>
+    <a href="{% url 'account:confirm_resend' %}">
+        <button type="submit" class="btn btn-lg btn-light btn-outline-warning">Resend confirmation link</button>
+    </a>
+</div>
+
+
+{% endblock %}

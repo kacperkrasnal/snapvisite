@@ -1,0 +1,17 @@
+{% extends 'snapvisite/base.html' %}
+
+
+{% block content %}
+
+<h1 class="text-center">Send mail to company</h1>
+<div class="d-flex justify-content-center" style="border-top: solid 1px gray; padding-top: 20px">
+    <form method="post" enctype="multipart/form-data">
+        {% for field in form %}
+        <label for="{{ field.auto_id }}">{{ field.label }}</label>
+        {{ field }}
+        {% endfor %}
+        <button type="submit" class="btn btn-lg btn-outline-success" style="margin-top: 20px; width: 30%;">Send</button>
+        {% csrf_token %}
+    </form>
+</div>
+{% endblock %}

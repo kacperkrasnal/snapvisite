@@ -1,0 +1,31 @@
+{% load static %}
+{% load custom_tags %}
+    <div class="row mt-3 " style="border: 1px solid lightgray; height: 230px;background-color: rgba(76, 175, 80, 0.25);">
+        <div class="col-2" style="height: 200px">
+            {% if appointment.service.company.photo %}
+            <a href="{% url 'snapvisite:company_detail' appointment.service.company.pk %}"><img class="pt-3" src="{{ appointment.service.company.photo.url }}" style="height: 200px; width: 200px;"></a>
+            {% else %}
+            <a href="{% url 'snapvisite:company_detail' appointment.service.company.pk %}"><img class="shadow-sm bg-light mt-3" src="{% static 'snapvisite/images/default_company_photo.png' %}" style="height: 200px; width: 200px;"></a>
+            {% endif %}
+        </div>
+        <div class="col-7">
+            <h1 class="text-center">&emsp;&emsp;&emsp;&emsp;&emsp;{{ appointment.time_slot.company_day.date|date:"d-m-Y" }}
+             </h1>
+            <h2 class="text-start"><strong>{{ appointment.service.company.company_name }} at {{ appointment.time_slot.company_day.date|date:"l" }} {{ appointment.time_slot.start_time|time:'H:i' }} </strong></h2>
+            <h2 class="text-start">{{ appointment.service.name }} {{ appointment.service.price }}.-</h2>
+            <h3 class="text-start"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-signpost-2" viewBox="0 0 16 16">
+            <path d="M7 1.414V2H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h5v1H2.5a1 1 0 0 0-.8.4L.725 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4H7v5h2v-5h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H9V6h4.5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.3 2.4a1 1 0 0 0-.8-.4H9v-.586a1 1 0 0 0-2 0zM13.5 3l.75 1-.75 1H2V3h11.5zm.5 5v2H2.5l-.75-1 .75-1H14z"/>
+            </svg>
+            {% if appointment.service.company.address.apartment_number %}
+            {{ appointment.service.company.address.street_name }} {{ appointment.service.company.address.street_number }}/{{ appointment.service.company.address.apartment_number }}&emsp; {{ appointment.service.company.address.city }}, {{ appointment.service.company.address.postal_code }}
+            {% else %}
+            {{ appointment.service.company.address.street_name }} {{ appointment.service.company.address.street_number }}&emsp; {{ appointment.service.company.address.city }}, {{ appointment.service.company.address.postal_code }}
+            {% endif %}
+            </h3>
+            <h5 class="text-start"><strong>#{{ appointment.appointment_code }}</strong> </h5>
+        </div>
+        <div class="col-3 bg-light" style="border: 1px solid gray;">
+            <h3 class="text-center"><strong> Note: </strong> </h3>
+            <p style="font-size: 18px">{{ appointment.note }}</p>
+        </div>
+    </div>

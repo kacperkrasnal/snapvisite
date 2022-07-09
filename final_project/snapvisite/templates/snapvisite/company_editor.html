@@ -1,0 +1,44 @@
+{% extends 'snapvisite/base.html' %}
+
+
+{% block content %}
+<div class="container ms-auto mx-auto bg-light text-center" style="border: solid 1px black; font-family: 'Lato Light', serif; padding-bottom: 50px;">
+    <div class="row">
+        <div class="col-12 border-bottom border-end">
+            <h3 class="display-4 text-center">Editor</h3>
+        </div>
+        <div class="col-3"></div>
+        <div class="col-6">
+            <div class="form-group"></div>
+            <form method="post" enctype="multipart/form-data">
+                {% for field in form %}
+                    <label for="{{ field.auto_id }}" style="font-size: 28px">{{ field.label }}</label>
+                    {{ field }}
+                    {{ field.help_text }}
+                {% endfor %}
+            <br>
+            {{ form.errors }}
+            <button type="submit" class="btn btn-lg btn-outline-dark" name='submit' style="margin-bottom: 20px; width: 40%; font-size: 28px; background-color: white; color: black;"> Save </button>
+                {% csrf_token %}
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+$( document ).ready(function() {
+    $(function(){
+        $('.timepicker').timepicker({
+            timeFormat: 'HH:mm ',
+            interval: 30,
+            minTime: '6am',
+            maxTime: '23:30pm',
+            startTime: '6:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+    });
+});
+
+</script>
+{% endblock %}

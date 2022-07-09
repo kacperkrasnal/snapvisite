@@ -1,0 +1,50 @@
+{% load static %}
+{% load custom_tags %}
+    <div class="row mt-3 bg-light" style="border: 1px solid lightgray; height: 340px">
+        <div class="col-3" style="height: 300px">
+            {% if company.photo %}
+            <a href="{% url 'snapvisite:company_detail' company.pk %}"><img class="pt-3" src="{{ company.photo.url }}" style="height: 98%; width: 98%;"></a>
+            {% else %}
+            <a href="{% url 'snapvisite:company_detail' company.pk %}"><img class="shadow-sm bg-light mt-3" src="{% static 'snapvisite/images/default_company_photo.png' %}" style="height: 98%; width: 98%;"></a>
+            {% endif %}
+        </div>
+        <div class="col-3">
+            <p style="font-size: 36px;"> {{ company.company_name }} </p>
+            <p style="font-size: 28px;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-signpost-2" viewBox="0 0 16 16">
+            <path d="M7 1.414V2H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h5v1H2.5a1 1 0 0 0-.8.4L.725 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4H7v5h2v-5h5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H9V6h4.5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.3 2.4a1 1 0 0 0-.8-.4H9v-.586a1 1 0 0 0-2 0zM13.5 3l.75 1-.75 1H2V3h11.5zm.5 5v2H2.5l-.75-1 .75-1H14z"/>
+            </svg> Address </p>
+            {% if company.address.apartment_number %}
+            <p style="font-size: 22px">{{ company.address.street_name }} {{ company.address.street_number }} / {{ company.address.apartment_number }}</p>
+            {% else %}
+            <p style="font-size: 22px">{{ company.address.street_name }} {{ company.address.street_number }}</p>
+            {% endif %}
+            <p style="font-size: 22px">{{ company.address.city }}, {{ company.address.postal_code }}</p>
+            <a href="{% url 'snapvisite:company_detail' company.pk %}"><button type="button" style="width:100%" class="btn btn-light btn-outline-dark btn-sm">Visit company site</button></a>
+        </div>
+        <div class="col-3 ps-5">
+            <p style="font-size: 28px; margin-right: 15px;"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+            </svg> Open hours: </p>
+            {% for schedule in company.schedule_set.all %}
+            {% if schedule.open_time and schedule.close_time %}
+            <p> <strong>{{ schedule.day_of_week }}</strong> {{ schedule.open_time|time:"H:i"}}-{{ schedule.close_time|time:"H:i" }} </p>
+            {% else %}
+            <p> <strong>{{ schedule.day_of_week }}</strong> Closed </p>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-3 pt-3">
+            {% for service in company.service_set.all %}
+            {% if forloop.counter <= 3 %}
+            <p data-bs-toggle="popover" data-bs-content="{{ service.description }}" data-bs-trigger="hover" ><strong>{{ service.name }} -</strong> {{ service.price }}.- {{ service.time|duration_format }}</p>
+            <a href="{% url 'snapvisite:user_terminal' company.id service.id %}">
+                <button type="button" style="width:100%" class="btn btn-light btn-outline-success">Snap your visit</button>
+            </a>
+            {% if forloop.counter <= 2 %}
+            <hr>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>

@@ -1,0 +1,37 @@
+{% extends 'snapvisite/base.html' %}
+
+
+{% block content %}
+<div class="container ms-auto mx-auto bg-light text-center" style="border: solid 1px black; border-radius: 40px; font-family: 'Lato Light', serif;">
+    <div class="row"><h1 class="display-4 text-center"><strong> Registration </strong></h1></div><br>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+<form method="post">
+
+    {% for field, errors in form.errors.items %}
+        {% for error in errors %}
+            <div class="alert alert-danger">
+                {{error|escape}}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+<label for="id_email"><h1 class="display-7 text-center"> Email </h1></label>
+    <input type="email" class="form-control mb-4" placeholder="Enter email:" name="email" maxlength="80" autofocus required id="id_email">
+<label for="id_user_name"><h1 class="display-7 text-center"> Username </h1></label>
+    <input type="text" class="form-control mb-4" placeholder="Enter your username:" name="user_name" maxlength="30" required id="id_user_name">
+<label for="id_password1"><h1 class="display-7 text-center"> Password </h1></label>
+    <input type="password" class="form-control mb-4" placeholder="Enter your password:" name="password1" autocomplete="new-password" required id="id_password1">
+<label for="id_password2"><h1 class="display-7 text-center"> Password Confirmation </h1></label>
+    <input type="password" class="form-control" placeholder="Repeat your password:" name="password2" autocomplete="new-password" required id="id_password2">
+<br>
+<button type="submit" class="btn btn-lg btn-outline-dark" name='submit' value="register" style="margin-bottom: 20px; width: 40%; font-size: 24px; background-color: white; color: black;"> Register </button>
+
+  {% csrf_token %}
+</form>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
+{% endblock content %}

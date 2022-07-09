@@ -1,0 +1,150 @@
+{% extends 'snapvisite/base.html' %}
+{% load static %}
+{% load custom_tags %}
+
+
+
+{% block content %}
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar-week" viewBox="0 0 16 16">
+        <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+        </svg> Calendar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'snapvisite:multiple_company_day' object.id %}">Open your worktime</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'snapvisite:create_company_day' object.id %}">Open single day</a>
+              </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid text-center pt-3" style="font-family: 'Lato Light', serif;">
+    <div class="row row-cols-7">
+
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                {% if days.has_previous %}
+                <li class="page-item"><a style="color: inherit;text-decoration: inherit;" class="page-link" href="?page=1">&laquo First</a></li>
+                <li class="page-item"><a style="color: inherit;text-decoration: inherit;" class="page-link" href="?page={{ days.previous_page_number }}"> Previous </a></li>
+                {% endif %}
+                <li class="page-item disabled"><a class="page-link" href="#">Page: {{ days.number }} of {{ days.paginator.num_pages }}</a></li>
+                {% if days.has_next %}
+                <li class="page-item"><a style="color: inherit;text-decoration: inherit;" class="page-link" href="?page={{ days.next_page_number }}">Next</a></li>
+                <li class="page-item"><a style="color: inherit;text-decoration: inherit;" class="page-link" href="?page={{ days.paginator.num_pages }}">Last &raquo</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    {% for company_day in days %}
+        <div class="col" style="max-width: calc(100% / 7)">
+            <a href="{% url 'snapvisite:delete_company_day' company_day.id object.id %}"><button style="width: 3px; height: 3px" type="button" class="btn-close" aria-label="Close"></button></a>
+            <h3>{{  company_day.date|date:"d-m-Y" }}</h3>
+            <h4>{{  company_day.date|date:"l" }}</h4>
+            {% for timeslot in company_day.timeslot_set.all %}
+            <div class="list-group">
+
+                <!-- FREE TIMESLOT -->
+                {% if timeslot.status %}
+
+                <button type="button" class="list-group-item list-group-item-action list-group-item-success" data-bs-toggle="modal" data-bs-target="#modal_delete{{ timeslot.id }}">
+                    {{ timeslot.start_time|time:"H:i" }}
+                </button>
+
+
+                <div class="modal fade" id="modal_delete{{ timeslot.id }}" tabindex="-1" aria-labelledby="descriptionLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="descriptionLabel" style="text-align: start">
+                                    <strong>{{ timeslot.company_day.date|date:"l" }} - {{ timeslot.start_time|time:"H:i" }}</strong></h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                            </div>
+
+                            <div class="modal-body" style="text-align: start">
+                                <a href="{% url 'snapvisite:delete_timeslot' timeslot.id object.id %}"><button  type="button" class="btn btn-danger" aria-label="Close">Delete Timeslot</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- OCCUPIED TIMESLOT -->
+                {% else %}
+
+                <button type="button" class="list-group-item list-group-item-action list-group-item-primary" data-bs-toggle="modal" data-bs-target="#modal{{ timeslot.appointment.id }}">
+                    {{ timeslot.start_time|time:"H:i" }}
+                </button>
+                <div class="modal fade" id="modal{{ timeslot.appointment.id }}" tabindex="-1" aria-labelledby="descriptionLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="descriptionLabel" style="text-align: start">
+                                    <strong>{{ timeslot.company_day.date|date:"l" }} - {{ timeslot.start_time|time:"H:i" }}</strong></h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                            </div>
+
+                            <div class="modal-body" style="text-align: start">
+                                <h4><strong>Service:</strong> {{ timeslot.appointment.service.name }}</h4>
+                                <h4><strong>Client:</strong> {{ timeslot.appointment.user.first_name }} {{ timeslot.appointment.user.last_name }}</h4>
+                                <h4><strong>Phone number:</strong> {{ timeslot.appointment.user.phone_number }}</h4>
+                                <h4><strong>Additional information:</strong>
+                                    <textarea disabled rows="5" style="font-size: 20px; width: 100%">{{ timeslot.appointment.note }}</textarea>
+                                </h4>
+                                {% if timeslot.appointment.payment_status %}
+                                <h2 style="margin-top: 30px; border-top: solid 1px black; padding-top: 20px">Payment status: <span class="badge bg-success">Paid</span> </h2>
+                                {% else %}
+                                <h2 style="margin-top: 30px ;border-top: solid 1px black; padding-top: 20px">Payment status: <span class="badge bg-danger">Not paid</span></h2>
+                                {% endif %}
+                                <div class="text" style="border-top: solid 1px black; padding-top: 15px">Appointment code:<br> {{ timeslot.appointment.appointment_code }}</div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% endif %}
+            </div>
+            {% endfor %}
+            <br>
+            <div class="dropdown">
+                <button style="width:100%" class="btn btn-success dropdown-toggle" type="button" id="dropdown{{ company_day.id }}" data-bs-toggle="dropdown" aria-expanded="false">Create TimeSlot
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdown{{ company_day.id }}">
+                    <li><a class="dropdown-item" href="{% url 'snapvisite:multiple_timeslot' company_day.id %}">Multiple</a></li>
+                    <li><a class="dropdown-item" href="{% url 'snapvisite:single_timeslot' company_day.id %}">Single</a></li>
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+
+<script>
+$( document ).ready(function() {
+    $(function(){
+        $('.timepicker').timepicker({
+            timeFormat: 'HH:mm ',
+            interval: 30,
+            minTime: '6am',
+            maxTime: '23:30pm',
+            startTime: '6:00',
+            dynamic: false,
+            dropdown: true,
+            scrollbar: true
+        });
+    });
+});
+
+</script>
+
+
+{% endblock content %}

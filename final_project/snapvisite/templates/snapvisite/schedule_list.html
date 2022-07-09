@@ -1,0 +1,23 @@
+{% extends 'snapvisite/base.html' %}
+{% load custom_tags %}
+
+
+{% block content %}
+<div class="container ms-auto mx-auto bg-light text-center" style="border: solid 1px black; font-family: 'Lato Light', serif; padding-bottom: 50px;">
+    <div class="row">
+        <div class="col-12 border-bottom border-end">
+            <h3 class="display-4 text-center">Editor</h3>
+        </div>
+        <div class="col-3"></div>
+        <div class="row row-cols-7">
+            {% for schedule in object_list %}
+            <div class="col" style="max-width: calc(100% /7)">
+                <h2><strong>{{ schedule.day_of_week }}</strong></h2>
+                <h5>{{ schedule.open_time|time:"H:i" }}-{{ schedule.close_time|time:"H:i" }}</h5>
+                <a class="nav-link" href="{% url 'snapvisite:schedule_update' schedule.id schedule.company.id %}"><button type="button" class="btn btn-outline-dark"><strong>Edit</strong></button></a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

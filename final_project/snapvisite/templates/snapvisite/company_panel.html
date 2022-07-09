@@ -1,0 +1,30 @@
+{% extends 'snapvisite/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container" style="font-family: 'Lato Light', serif;">
+    <div class="row row-cols-4 g-2">
+        {% for company in object_list %}
+        <div class="col">
+            <a style="text-decoration: none !important;color:inherit" href="{% url 'snapvisite:your_company' company.pk %}"><div class="card w-100" style="text-align: center; margin-top: 10px; max-width: 320px">
+                {% if company.photo %}
+                <img src="{{ company.photo.url }}" class="card-img-top mx-auto" style="width: 90%; height:250px; margin-top: 10px;">
+                {% else %}
+                <img src="{% static 'snapvisite/images/default_company_photo.png' %}" class="card-img-top mx-auto" style="width: 90%; height:250px; margin-top: 10px;">
+                {% endif %}
+                <div class="card-body">
+                    <p style="font-size: 28px;"><strong>{{ company.company_name }}</strong></p>
+                </div>
+            </div></a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row mx-auto text-center" style="padding-top: 15px;"><a href="{% url 'snapvisite:create_company_first_step' %}"><button type="button" class="btn btn-light btn-outline-success btn-lg">Open new company</button></a>
+    </div>
+</div>
+
+
+
+{% endblock content %}

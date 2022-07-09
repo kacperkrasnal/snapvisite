@@ -1,0 +1,50 @@
+{% load static %}
+<!-- RIGHT SIDEBAR ACCOUNT PANEL -->
+<div class="offcanvas offcanvas-end" id="accountcanvas" style="font-family: 'Lato Light', serif;">
+  <div class="offcanvas-header" style="background-color: #CAF7F6;">
+    <h1 class="offcanvas-title mx-auto">Account panel</h1>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body text-center">
+
+    <!-- LOGGED USER -->
+    {% if request.user.is_authenticated %}
+
+    <p style="font-size: 22px">Welcome, <strong>{{ request.user.user_name }}</strong></p>
+    <!-- Future visits View -->
+    <a href="{% url 'account:appointments_user' request.user.id %}"><button type="button" class="btn btn-outline-dark btn-lg">Check yours visits</button></a>
+    <br><br>
+    <!-- Account Detail View -->
+    <a href="{% url 'account:profile_detail' request.user.id %}"><button type="button" class="btn btn-outline-dark btn-lg">See yours details</button></a><br>
+    <br>
+    <!-- Create company from user or go into your company panel -->
+    {% if request.user.company_set.exists %}
+    <a href="{% url 'snapvisite:company_panel' %}"><button type="button" class="btn btn-outline-dark btn-lg">Company panel</button></a><br>
+    {% else %}
+    <a href="{% url 'snapvisite:create_company_first_step' %}"><button type="button" class="btn btn-outline-dark btn-lg">Run your business </button></a><br>
+    {% endif %}
+    <br>
+    <!-- Logout Section -->
+    <a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-dark btn-lg">Logout</button></a>
+    <br>
+
+    <!-- USER NOT LOGGED ON -->
+
+    {% else %}
+
+    <!-- Go to login -->
+    <p style="font-size: 22px"> Already <strong>have</strong> an account on our website?<br> <a href="{% url 'login' %}"><button type="button" class="btn btn-outline-dark btn-lg">Login</button></a></p>
+    <br>
+    <!-- Go to registration -->
+    <p style="font-size: 22px">Snap your visit! Just create profile. Process is <strong>fast</strong> and <strong>easy</strong>
+      <br>
+      <a href="{% url 'account:registration' %}"><button class="btn btn-outline-dark btn-lg"> Registration </button></a>
+      <br><br>Want to run your own <strong>business</strong>? First make an account.<strong> Click above</strong><br></p>
+    <br>
+    {% endif %}
+    <!-- Bottom logo image -->
+    <div class="fixed-bottom">
+      <img class="img-fluid float-end" style="margin-right: 30px" src="{% static 'snapvisite/images/logo_color.png' %}">
+    </div>
+  </div>
+</div>

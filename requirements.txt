@@ -1,0 +1,9 @@
+django==4.0.4
+Pillow==9.1.0
+python-decouple~=3.6
+django-phonenumber-field~=6.1.0
+phonenumbers==8.12.47
+pytest==7.1.2
+pytest-django==4.5.2
+pytest-factoryboy==2.3.1
+django-extra-views==0.14.0
