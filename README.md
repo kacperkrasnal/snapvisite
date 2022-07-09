@@ -85,13 +85,19 @@ This is list of software that you need to run SnapVisite project and how to inst
 
 1. Clone the repo with command:
    ```sh
-   git clone https://github.com/group-three-sda/final-project.git
+   git clone https://github.com/kacperkrasnal/snapvisite.git
    ```
-2. Install python packages using terminal with command:
+2. Remember to create virtual env and activate with following commands:
+   ```sh
+   pip install virtualenv
+   virtualenv venv
+   .\venv\Scripts\activate
+   ``` 
+3. Install python packages using terminal with command:
    ```sh
    pip install -r requirements.txt
    ```
-3. Make your secret key in settings.py     
+4. Make your secret key in settings.py     
    ```js
    In the folder containing the manage.py file, create an .env file.
 
@@ -99,7 +105,7 @@ This is list of software that you need to run SnapVisite project and how to inst
        SECRET_KEY = example_name
        DEBUG = True
    ```
-4. Migrate.     
+5. Migrate.     
    ```js
    Open Terminal and be sure that you are in folder 
    containing the manage.py file
@@ -108,7 +114,7 @@ This is list of software that you need to run SnapVisite project and how to inst
    python manage.py migrate
    ```
 
-5. Load data from fixtures.     
+6. Load data from fixtures.     
    ```js
    Open Terminal and be sure that you are in folder 
    containing the manage.py file
@@ -116,7 +122,7 @@ This is list of software that you need to run SnapVisite project and how to inst
    Use command:
    python manage.py loaddata category_data.json
    ```
-6. Run server.     
+7. Run server.     
    ```js
    Open Terminal and be sure that you are in folder 
    containing the manage.py file
