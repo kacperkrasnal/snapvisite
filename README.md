@@ -40,8 +40,9 @@
 </details>
 
 
+<img src="https://user-images.githubusercontent.com/93079515/178117431-4774a0aa-1f3b-469a-aebd-9e4b56b9ca4a.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/93079515/178117447-be8edbcc-e633-4a1d-b470-586bd3dda1d2.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/93079515/178117462-29bcba1a-6374-4349-9890-b130e0cc6027.png" width="30%"></img> 
 
-<!-- ABOUT THE PROJECT -->
+<!-- ABOUT THE PROJECT --> https://img.shields.io/badge/python-django-brightgreen
 ## About The Project
 
 This is a credit project for Software Development Academy courses. <br> 
@@ -152,7 +153,7 @@ The "SnapVisit" service is designed to make it easier for service providers to c
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
+<img src="https://user-images.githubusercontent.com/93079515/178117530-f63a7acc-5193-46f7-9a2c-bb87e9b1005e.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/93079515/178117532-29bc6201-e659-45c3-8817-c8527f511be8.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/93079515/178117540-f95fff75-6d2a-49f0-8a86-eb396ba3d1f1.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/93079515/178117543-22126651-6dc6-4057-afdc-01c280ff4527.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/93079515/178117550-ae23db7b-8753-4201-bc0d-60a076effe20.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/93079515/178117566-197263c1-ddec-4da4-8dde-362113bb9794.png" width="30%"></img> 
 
 <!-- FEATURES -->
 ## Features
