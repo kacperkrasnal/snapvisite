@@ -42,7 +42,7 @@
 
 <img src="https://user-images.githubusercontent.com/93079515/178117431-4774a0aa-1f3b-469a-aebd-9e4b56b9ca4a.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/93079515/178117447-be8edbcc-e633-4a1d-b470-586bd3dda1d2.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/93079515/178117462-29bcba1a-6374-4349-9890-b130e0cc6027.png" width="30%"></img> 
 
-<!-- ABOUT THE PROJECT --> https://img.shields.io/badge/python-django-brightgreen
+<!-- ABOUT THE PROJECT -->
 ## About The Project
 
 This is a credit project for Software Development Academy courses. <br> 
