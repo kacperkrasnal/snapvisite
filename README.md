@@ -2,15 +2,14 @@
 <br />
 <div align="center">
   <a href="https://github.com/group-three-sda/final-project">
-    <img src="final_project/static/snapvisite/images/logo_color.png" alt="Logo" width="80" height="20">
+    <img src="final_project/static/snapvisite/images/logo_color.png" alt="Logo" width="400" height="100">
   </a>
 
-<h3 align="center">SnapVisite</h3>
 
-  <p align="center">
+  <h3 align="center">
     Snap your visit right now!
     
-  </p>
+  </h3>
 </div>
 
 
