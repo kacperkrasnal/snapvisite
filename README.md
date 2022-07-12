@@ -155,21 +155,19 @@ The "SnapVisit" service is designed to make it easier for service providers to c
 <!-- FEATURES -->
 ## Features
 
--  Registration of new service providers
-- -  Creation of a corporate account management panel
-- -  Personalization of the service provider panel
-- -  Adding a list of services and a price list
-- -  Adding a location and address
-- -  Editing the schedule
-- -  Confirming appointments
-- -  Check date and time details
-- -  Feedback system
--  Registration of users as recipients of services 
-- -  Deleting users as a recipient of services
-- -  Booking appointments with a provider
-- -  Option to pay for the service
-- -  Ability to view future visits
-- -  Finding service providers
+- Registration of new service providers
+- Creation of a corporate account management panel
+- Personalization of the service provider panel
+- Adding a list of services and a price list
+- Adding a location and address
+- Editing the schedule
+- Check date and time details
+- Registration of users as recipients of services 
+- Deleting users as a recipient of services
+- Booking appointments with a provider
+- Option to pay for the service
+- Ability to view future visits
+- Finding service providers
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
