@@ -67,15 +67,14 @@ The site allows the service provider to show available appointments and individu
 Here are instructions on how to run the SnapVisite project locally. <br>
 Describes how to get a local copy, what you need to run it and how to run it. 
 
-### Prerequisites
+<h2 align="center"> Prerequisites </h2>
 
 <h4>Install python 3.9 or newer from <a href="https://www.python.org/">Python.org</a></h4>
 <h4>If u don't have code editor install <a href="https://www.jetbrains.com/pycharm/">PyCharm</a> or <a href="https://code.visualstudio.com">Visual Studio Code</a></h4>
 
 
 
-
-### Installation
+<h2 align="center"> Installation </h2>
 
 1. Clone the repo with command:
    ```sh
@@ -143,7 +142,7 @@ Describes how to get a local copy, what you need to run it and how to run it.
 
 
 <!-- USAGE -->
-## Usage
+<h2 align="center"> Usage </h2>
 
 The "SnapVisit" service is designed to make it easier for service providers to connect with their customers by speeding up the appointment booking and payment process. The service provider will be able to register their business, set services and their price list, create a calendar to manage appointments. The customer will have the freedom to choose appointments with the selected service provider based on their needs.
 
@@ -153,7 +152,7 @@ The "SnapVisit" service is designed to make it easier for service providers to c
 <img src="https://user-images.githubusercontent.com/93079515/178117530-f63a7acc-5193-46f7-9a2c-bb87e9b1005e.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/93079515/178117532-29bc6201-e659-45c3-8817-c8527f511be8.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/93079515/178117540-f95fff75-6d2a-49f0-8a86-eb396ba3d1f1.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/93079515/178117543-22126651-6dc6-4057-afdc-01c280ff4527.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/93079515/178117550-ae23db7b-8753-4201-bc0d-60a076effe20.png" width="30%"></img> <img src="https://user-images.githubusercontent.com/93079515/178117566-197263c1-ddec-4da4-8dde-362113bb9794.png" width="30%"></img> 
 
 <!-- FEATURES -->
-## Features
+<h2 align="center"> Features </h2>
 
 - Registration of new service providers
 - Creation of a corporate account management panel
@@ -173,7 +172,7 @@ The "SnapVisit" service is designed to make it easier for service providers to c
 
 
 <!-- CONTACT -->
-## Contact
+<h2 align="center"> Contact </h2>
 
 Contributors:
 
