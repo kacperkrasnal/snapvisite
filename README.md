@@ -43,7 +43,7 @@
 
 <!-- ABOUT THE PROJECT --> 
 ![python-django-brightgreen](https://user-images.githubusercontent.com/93079515/178118071-cb77a995-32f7-4b39-8c8f-12eb62b69472.svg)
-## About The Project
+<h2 align="center"> About the project </h2>
 
 This is a credit project for Software Development Academy courses. <br> 
 A website was created to connect customers with service providers in the field of beauty and personal care services. 
@@ -52,12 +52,9 @@ The site allows the service provider to show available appointments and individu
 
 
 
-### Built With
+<h2 align="center"> Build with </h2>
 
-* [python](https://www.python.org/)
-* [django](https://www.djangoproject.com/)
-* [Pillow](https://pillow.readthedocs.io)
-* [bootstrap](https://pypi.org/project/bootstrap-py/)
+<div align="center"><img src="https://user-images.githubusercontent.com/93079515/178504798-6c72c216-638b-4919-8f0c-dea1f6706967.svg" width="90%"></img></div>
  
  <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -65,18 +62,16 @@ The site allows the service provider to show available appointments and individu
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+<h2 align="center"> Getting started </h2>
 
 Here are instructions on how to run the SnapVisite project locally. <br>
 Describes how to get a local copy, what you need to run it and how to run it. 
 
 ### Prerequisites
 
-This is list of software that you need to run SnapVisite project and how to install this software.
-* python 3.6 or newer
-  ```sh
-  install version 3.6 or newer from webside: https://www.python.org/
-  ```
+<h4>Install python 3.9 or newer from <a href="https://www.python.org/">Python.org</a></h4>
+<h4>If u don't have code editor install <a href="https://www.jetbrains.com/pycharm/">PyCharm</a> or <a href="https://code.visualstudio.com">Visual Studio Code</a></h4>
+
 
 
 
@@ -185,6 +180,7 @@ The "SnapVisit" service is designed to make it easier for service providers to c
 Contributors:
 
 https://github.com/kacperkrasnal
+<br>
 https://github.com/Marcin-Chudzik
 
 <p align="right">(<a href="#top">back to top</a>)</p>
